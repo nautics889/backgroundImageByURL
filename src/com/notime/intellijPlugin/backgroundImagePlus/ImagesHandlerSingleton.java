@@ -56,7 +56,6 @@ public enum ImagesHandlerSingleton {
     
     private void collectImages(List<String> images, String filePath) {
         File file = new File(filePath);
-        NotificationCenter.notice("Everything is OK! " + file.toPath());
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {

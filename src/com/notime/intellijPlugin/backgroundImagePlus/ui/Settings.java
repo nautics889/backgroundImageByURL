@@ -60,7 +60,7 @@ public class Settings implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
+        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileDescriptor();
         imageFolder.addBrowseFolderListener(new TextBrowseFolderListener(descriptor) {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class Settings implements Configurable {
                 if (!current.isEmpty()) {
                     fc.setCurrentDirectory(new File(current));
                 }
-                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fc.showOpenDialog(rootPanel);
                 
                 File file = fc.getSelectedFile();
