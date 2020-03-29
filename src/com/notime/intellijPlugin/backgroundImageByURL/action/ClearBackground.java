@@ -1,7 +1,7 @@
-package com.notime.intellijPlugin.backgroundImagePlus.action;
+package com.notime.intellijPlugin.backgroundImageByURL.action;
 
-import com.notime.intellijPlugin.backgroundImagePlus.BackgroundService;
-import com.notime.intellijPlugin.backgroundImagePlus.ui.Settings;
+import com.notime.intellijPlugin.backgroundImageByURL.BackgroundService;
+import com.notime.intellijPlugin.backgroundImageByURL.ui.Settings;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

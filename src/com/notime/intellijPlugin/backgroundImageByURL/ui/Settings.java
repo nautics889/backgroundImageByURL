@@ -1,4 +1,4 @@
-package com.notime.intellijPlugin.backgroundImagePlus.ui;
+package com.notime.intellijPlugin.backgroundImageByURL.ui;
 
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -9,7 +9,7 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.notime.intellijPlugin.backgroundImagePlus.BackgroundService;
+import com.notime.intellijPlugin.backgroundImageByURL.BackgroundService;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +24,7 @@ import java.io.File;
  */
 public class Settings implements Configurable {
     
-    public static final String FOLDER = "BackgroundImagesFolder";
+    public static final String PATH_TO_FILE = "BackgroundImagesFolder";
     public static final String AUTO_CHANGE = "BackgroundImagesAutoChange";
     public static final String KEEP_SAME_IMAGE = "BackgroundImagesKeepSameImage";
     public static final String INTERVAL = "BackgroundImagesInterval";
@@ -60,7 +60,7 @@ public class Settings implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
+        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileDescriptor();
         imageFolder.addBrowseFolderListener(new TextBrowseFolderListener(descriptor) {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class Settings implements Configurable {
                 if (!current.isEmpty()) {
                     fc.setCurrentDirectory(new File(current));
                 }
-                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fc.showOpenDialog(rootPanel);
                 
                 File file = fc.getSelectedFile();
@@ -84,7 +84,7 @@ public class Settings implements Configurable {
     @Override
     public boolean isModified() {
         PropertiesComponent prop = PropertiesComponent.getInstance();
-        String storedFolder = prop.getValue(FOLDER);
+        String storedFolder = prop.getValue(PATH_TO_FILE);
         String uiFolder = imageFolder.getText();
         if (storedFolder == null) {
             storedFolder = "";
@@ -143,7 +143,7 @@ public class Settings implements Configurable {
         int interval = ((SpinnerNumberModel) intervalSpinner.getModel()).getNumber().intValue();
         int timeUnit = timeUnitBox.getSelectedIndex();
         
-        prop.setValue(FOLDER, imageFolder.getText());
+        prop.setValue(PATH_TO_FILE, imageFolder.getText());
         prop.setValue(INTERVAL, interval, INTERVAL_SPINNER_DEFAULT);
         prop.setValue(AUTO_CHANGE, autoChange);
         prop.setValue(KEEP_SAME_IMAGE, keepSameImageCheckBox.isSelected());
@@ -155,7 +155,7 @@ public class Settings implements Configurable {
     @Override
     public void reset() {
         PropertiesComponent prop = PropertiesComponent.getInstance();
-        imageFolder.setText(prop.getValue(FOLDER));
+        imageFolder.setText(prop.getValue(PATH_TO_FILE));
         intervalSpinner.setValue(prop.getInt(INTERVAL, INTERVAL_SPINNER_DEFAULT));
         autoChangeCheckBox.setSelected(prop.getBoolean(AUTO_CHANGE, false));
         keepSameImageCheckBox.setSelected(prop.getBoolean(KEEP_SAME_IMAGE, false));
