@@ -1,8 +1,8 @@
-package com.notime.intellijPlugin.backgroundImagePlus;
+package com.notime.intellijPlugin.backgroundImageByURL;
 
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.notime.intellijPlugin.backgroundImagePlus.ui.Settings;
+import com.notime.intellijPlugin.backgroundImageByURL.ui.Settings;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.RejectedExecutionException;

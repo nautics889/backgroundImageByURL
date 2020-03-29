@@ -1,4 +1,4 @@
-package com.notime.intellijPlugin.backgroundImagePlus;
+package com.notime.intellijPlugin.backgroundImageByURL;
 
 import org.apache.commons.collections.CollectionUtils;
 

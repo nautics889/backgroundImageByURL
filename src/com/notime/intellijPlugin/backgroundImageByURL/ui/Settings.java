@@ -1,4 +1,4 @@
-package com.notime.intellijPlugin.backgroundImagePlus.ui;
+package com.notime.intellijPlugin.backgroundImageByURL.ui;
 
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -9,7 +9,7 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.notime.intellijPlugin.backgroundImagePlus.BackgroundService;
+import com.notime.intellijPlugin.backgroundImageByURL.BackgroundService;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
