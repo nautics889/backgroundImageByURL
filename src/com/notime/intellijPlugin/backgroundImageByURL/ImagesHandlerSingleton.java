@@ -13,6 +13,9 @@ import java.util.List;
 /**
  * Author: He Lili
  * Date:   2018/10/22
+ *
+ * Modified: nautics889
+ * Date:     2020/03/29
  */
 public enum ImagesHandlerSingleton {
     

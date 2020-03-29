@@ -9,7 +9,12 @@ import java.util.Arrays;
 /**
  * Author: Allan de Queiroz
  * Date:   07/05/17
- * Modified by He Lili   Date: 19/10/18
+ *
+ * Modified: He Lili
+ * Date: 19/10/18
+ *
+ * Modified: nautics889
+ * Date:     2020/03/29
  */
 public class RandomBackgroundTask implements Runnable {
 
