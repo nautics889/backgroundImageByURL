@@ -24,7 +24,7 @@ import java.io.File;
  */
 public class Settings implements Configurable {
     
-    public static final String FOLDER = "BackgroundImagesFolder";
+    public static final String PATH_TO_FILE = "BackgroundImagesFolder";
     public static final String AUTO_CHANGE = "BackgroundImagesAutoChange";
     public static final String KEEP_SAME_IMAGE = "BackgroundImagesKeepSameImage";
     public static final String INTERVAL = "BackgroundImagesInterval";
@@ -84,7 +84,7 @@ public class Settings implements Configurable {
     @Override
     public boolean isModified() {
         PropertiesComponent prop = PropertiesComponent.getInstance();
-        String storedFolder = prop.getValue(FOLDER);
+        String storedFolder = prop.getValue(PATH_TO_FILE);
         String uiFolder = imageFolder.getText();
         if (storedFolder == null) {
             storedFolder = "";
@@ -143,7 +143,7 @@ public class Settings implements Configurable {
         int interval = ((SpinnerNumberModel) intervalSpinner.getModel()).getNumber().intValue();
         int timeUnit = timeUnitBox.getSelectedIndex();
         
-        prop.setValue(FOLDER, imageFolder.getText());
+        prop.setValue(PATH_TO_FILE, imageFolder.getText());
         prop.setValue(INTERVAL, interval, INTERVAL_SPINNER_DEFAULT);
         prop.setValue(AUTO_CHANGE, autoChange);
         prop.setValue(KEEP_SAME_IMAGE, keepSameImageCheckBox.isSelected());
@@ -155,7 +155,7 @@ public class Settings implements Configurable {
     @Override
     public void reset() {
         PropertiesComponent prop = PropertiesComponent.getInstance();
-        imageFolder.setText(prop.getValue(FOLDER));
+        imageFolder.setText(prop.getValue(PATH_TO_FILE));
         intervalSpinner.setValue(prop.getInt(INTERVAL, INTERVAL_SPINNER_DEFAULT));
         autoChangeCheckBox.setSelected(prop.getBoolean(AUTO_CHANGE, false));
         keepSameImageCheckBox.setSelected(prop.getBoolean(KEEP_SAME_IMAGE, false));

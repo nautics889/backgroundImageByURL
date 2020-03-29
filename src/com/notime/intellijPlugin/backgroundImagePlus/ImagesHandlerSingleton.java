@@ -2,7 +2,6 @@ package com.notime.intellijPlugin.backgroundImagePlus;
 
 import org.apache.commons.collections.CollectionUtils;
 
-import javax.activation.MimetypesFileTypeMap;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,27 +20,22 @@ public enum ImagesHandlerSingleton {
      * 实例
      */
     instance;
-    
-    private MimetypesFileTypeMap typeMap = new MimetypesFileTypeMap();
-    
+
     private List<String> randomImageList = null;
     
-    private String lastFolder = null;
+    private String lastFilePath = null;
     
     public String getRandomImage(String filePath) {
         // 文件夹改动或者完成了一次循环
-        if (!filePath.equals(lastFolder) || CollectionUtils.isEmpty(randomImageList)) {
+        if (!filePath.equals(lastFilePath) || CollectionUtils.isEmpty(randomImageList)) {
             randomImageList = this.getRandomImageList(filePath);
         }
-        lastFolder = filePath;
-//        while (CollectionUtils.isNotEmpty(randomImageList) && !isImage(new File(randomImageList.get(0)))) {
-//            randomImageList.remove(0);
-//        }
+        lastFilePath = filePath;
         return CollectionUtils.isEmpty(randomImageList) ? null : randomImageList.remove(0);
     }
     
     public void resetRandomImageList() {
-        randomImageList = lastFolder == null ? null : this.getRandomImageList(lastFolder);
+        randomImageList = lastFilePath == null ? null : this.getRandomImageList(lastFilePath);
     }
     
     private List<String> getRandomImageList(String filePath) {
@@ -65,10 +59,5 @@ public enum ImagesHandlerSingleton {
             e.printStackTrace();
         }
     }
-    
-//    private boolean isImage(File file) {
-//        String[] parts = typeMap.getContentType(file).split("/");
-//        return parts.length != 0 && "image".equals(parts[0]);
-//    }
-    
+
 }
